@@ -228,7 +228,21 @@ public class ViewRecords {
                 dobCol = dobColIdx, statusCol = statusColIdx;
 
         // ── Sorter ────────────────────────────────────────────────────────────
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model) {
+            @Override
+            public void toggleSortOrder(int column) {
+                java.util.List<? extends RowSorter.SortKey> sortKeys = getSortKeys();
+                if (!sortKeys.isEmpty()) {
+                    RowSorter.SortKey currentSort = sortKeys.get(0);
+                    // On the 3rd click (when it's already descending), clear the sort
+                    if (currentSort.getColumn() == column && currentSort.getSortOrder() == SortOrder.DESCENDING) {
+                        setSortKeys(null);
+                        return;
+                    }
+                }
+                super.toggleSortOrder(column);
+            }
+        };
 
         // ── Table ─────────────────────────────────────────────────────────────
         JTable table = buildStyledTable(model, sorter, true, statusCol);
@@ -506,7 +520,21 @@ public class ViewRecords {
             model.addRow(new Object[] { ex.getMessage() });
         }
 
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model) {
+            @Override
+            public void toggleSortOrder(int column) {
+                java.util.List<? extends RowSorter.SortKey> sortKeys = getSortKeys();
+                if (!sortKeys.isEmpty()) {
+                    RowSorter.SortKey currentSort = sortKeys.get(0);
+                    // On the 3rd click (when it's already descending), clear the sort
+                    if (currentSort.getColumn() == column && currentSort.getSortOrder() == SortOrder.DESCENDING) {
+                        setSortKeys(null);
+                        return;
+                    }
+                }
+                super.toggleSortOrder(column);
+            }
+        };
         JTable table = buildStyledTable(model, sorter, false, -1);
         UIFactory.styleTableHeader(table, Constants.C_HEADER_BG);
         UIFactory.autoSizeColumns(table, model, model.getColumnCount(), 1100);
