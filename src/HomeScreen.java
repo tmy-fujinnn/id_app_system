@@ -7,11 +7,11 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-
 /**
  * MAIN HOME SCREEN
- * 	- The main dashboard shown after a successful login.
- * 	- Displays a styled nav bar, welcome header, four action cards, and a stat bar.
+ * - The main dashboard shown after a successful login.
+ * - Displays a styled nav bar, welcome header, four action cards, and a stat
+ * bar.
  */
 
 public class HomeScreen {
@@ -26,7 +26,7 @@ public class HomeScreen {
         JPanel root = new JPanel(new BorderLayout());
         root.setBackground(Constants.C_BG);
 
-        root.add(buildNav(frame),     BorderLayout.NORTH);
+        root.add(buildNav(frame), BorderLayout.NORTH);
         root.add(buildContent(frame), BorderLayout.CENTER);
 
         frame.add(root);
@@ -38,13 +38,14 @@ public class HomeScreen {
     private static JPanel buildNav(JFrame frame) {
         // Gradient nav panel
         JPanel nav = new JPanel(new BorderLayout()) {
-            @Override protected void paintComponent(Graphics g) {
+            @Override
+            protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                    RenderingHints.VALUE_ANTIALIAS_ON);
+                        RenderingHints.VALUE_ANTIALIAS_ON);
                 GradientPaint gp = new GradientPaint(
-                    0, 0, new Color(20, 47, 93),
-                    getWidth(), 0, new Color(28, 63, 120));
+                        0, 0, new Color(20, 47, 93),
+                        getWidth(), 0, new Color(28, 63, 120));
                 g2.setPaint(gp);
                 g2.fillRect(0, 0, getWidth(), getHeight());
             }
@@ -60,18 +61,19 @@ public class HomeScreen {
             logoMark = new JLabel(navLogoIcon);
         } else {
             logoMark = new JLabel() {
-                @Override protected void paintComponent(Graphics g) {
+                @Override
+                protected void paintComponent(Graphics g) {
                     Graphics2D g2 = (Graphics2D) g;
                     g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                        RenderingHints.VALUE_ANTIALIAS_ON);
+                            RenderingHints.VALUE_ANTIALIAS_ON);
                     g2.setColor(new Color(255, 255, 255, 40));
                     g2.fillOval(0, 0, 38, 38);
                     g2.setColor(Color.WHITE);
                     g2.setFont(new Font("Segoe UI", Font.BOLD, 18));
                     FontMetrics fm = g2.getFontMetrics();
                     g2.drawString("Q",
-                        (38 - fm.stringWidth("Q")) / 2,
-                        (38 + fm.getAscent() - fm.getDescent()) / 2);
+                            (38 - fm.stringWidth("Q")) / 2,
+                            (38 + fm.getAscent() - fm.getDescent()) / 2);
                 }
             };
             logoMark.setPreferredSize(new Dimension(38, 38));
@@ -101,10 +103,11 @@ public class HomeScreen {
         // ── Right: role badge + logout ────────────────────────────────────────
         // Role badge pill
         JLabel roleBadge = new JLabel("Administrator") {
-            @Override protected void paintComponent(Graphics g) {
+            @Override
+            protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                    RenderingHints.VALUE_ANTIALIAS_ON);
+                        RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setColor(new Color(255, 255, 255, 25));
                 g2.fill(new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 20, 20));
                 super.paintComponent(g);
@@ -116,7 +119,10 @@ public class HomeScreen {
         roleBadge.setOpaque(false);
 
         JButton logoutBtn = UIFactory.createOutlineButton("Logout");
-        logoutBtn.addActionListener(e -> { frame.dispose(); System.exit(0); });
+        logoutBtn.addActionListener(e -> {
+            frame.dispose();
+            System.exit(0);
+        });
 
         JPanel navRight = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 14));
         navRight.setOpaque(false);
@@ -124,7 +130,7 @@ public class HomeScreen {
         navRight.add(logoutBtn);
 
         nav.add(navLeftWrapper, BorderLayout.WEST);
-        nav.add(navRight,       BorderLayout.EAST);
+        nav.add(navRight, BorderLayout.EAST);
 
         // Bottom separator line
         JPanel navWrapper = new JPanel(new BorderLayout());
@@ -142,13 +148,14 @@ public class HomeScreen {
     private static JScrollPane buildContent(JFrame frame) {
         // Gradient background panel
         JPanel content = new JPanel() {
-            @Override protected void paintComponent(Graphics g) {
+            @Override
+            protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                    RenderingHints.VALUE_ANTIALIAS_ON);
+                        RenderingHints.VALUE_ANTIALIAS_ON);
                 GradientPaint gp = new GradientPaint(
-                    0, 0, new Color(248, 250, 252),
-                    0, getHeight(), new Color(237, 242, 248));
+                        0, 0, new Color(248, 250, 252),
+                        0, getHeight(), new Color(237, 242, 248));
                 g2.setPaint(gp);
                 g2.fillRect(0, 0, getWidth(), getHeight());
             }
@@ -191,37 +198,49 @@ public class HomeScreen {
         };
 
         Object[][] cards = {
-            { "Apply for ID",      "Submit a new application", "apply.png",  false, Constants.C_ACCENT },
-            { "View applications", "Browse all records",       "view.png",   false, new Color(16, 124, 88) },
-            { "Update record",     "Edit applicant details",   "update.png", false, new Color(100, 60, 180) },
-            { "Delete record",     "Remove an application",    "delete.png", true,  Constants.C_DANGER },
+                { "Apply for ID", "Submit a new application", "apply.png", false, Constants.C_ACCENT },
+                { "View applications", "Browse all records", "view.png", false, new Color(16, 124, 88) },
+                { "Update record", "Edit applicant details", "update.png", false, new Color(100, 60, 180) },
+                { "Delete record", "Remove an application", "delete.png", true, Constants.C_DANGER },
         };
 
         for (Object[] cd : cards) {
-            boolean danger  = (Boolean) cd[3];
-            Color   accent  = (Color)   cd[4];
+            boolean danger = (Boolean) cd[3];
+            Color accent = (Color) cd[4];
             JPanel card = buildActionCard(
-                (String) cd[0], (String) cd[1], (String) cd[2], danger, accent);
+                    (String) cd[0], (String) cd[1], (String) cd[2], danger, accent);
 
             card.addMouseListener(new MouseAdapter() {
                 Color normalBg = Constants.C_SURFACE;
+
                 public void mouseClicked(MouseEvent e) {
                     switch ((String) cd[0]) {
-                        case "Apply for ID"      -> { ApplicationForm.open(frame); refreshStats.run(); }
+                        case "Apply for ID" -> {
+                            ApplicationForm.open(frame);
+                            refreshStats.run();
+                        }
                         case "View applications" -> ViewRecords.open(frame);
-                        case "Delete record"     -> { DeleteRecord.open(frame);    refreshStats.run(); }
-                        case "Update record"     -> { UpdateRecord.open(frame);    refreshStats.run(); }
+                        case "Delete record" -> {
+                            DeleteRecord.open(frame);
+                            refreshStats.run();
+                        }
+                        case "Update record" -> {
+                            UpdateRecord.open(frame);
+                            refreshStats.run();
+                        }
                         default -> JOptionPane.showMessageDialog(
-                            frame, cd[0] + " \u2014 coming soon.");
+                                frame, cd[0] + " \u2014 coming soon.");
                     }
                 }
+
                 public void mouseEntered(MouseEvent e) {
                     card.setBackground(danger
-                        ? new Color(255, 245, 245)
-                        : new Color(245, 248, 255));
+                            ? new Color(255, 245, 245)
+                            : new Color(245, 248, 255));
                     card.setCursor(new Cursor(Cursor.HAND_CURSOR));
                     card.repaint();
                 }
+
                 public void mouseExited(MouseEvent e) {
                     card.setBackground(normalBg);
                     card.repaint();
@@ -237,11 +256,12 @@ public class HomeScreen {
 
         // Wrap in a gradient-bg scroll pane
         JPanel wrapper = new JPanel(new BorderLayout()) {
-            @Override protected void paintComponent(Graphics g) {
+            @Override
+            protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g;
                 GradientPaint gp = new GradientPaint(
-                    0, 0, new Color(248, 250, 252),
-                    0, getHeight(), new Color(237, 242, 248));
+                        0, 0, new Color(248, 250, 252),
+                        0, getHeight(), new Color(237, 242, 248));
                 g2.setPaint(gp);
                 g2.fillRect(0, 0, getWidth(), getHeight());
             }
@@ -262,10 +282,11 @@ public class HomeScreen {
     private static JPanel buildWelcomeHeader() {
         // Card with left accent bar
         JPanel card = new JPanel() {
-            @Override protected void paintComponent(Graphics g) {
+            @Override
+            protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                    RenderingHints.VALUE_ANTIALIAS_ON);
+                        RenderingHints.VALUE_ANTIALIAS_ON);
                 // White card bg
                 g2.setColor(Constants.C_SURFACE);
                 g2.fillRoundRect(0, 0, getWidth(), getHeight(), 12, 12);
@@ -302,27 +323,28 @@ public class HomeScreen {
 
         // Right: date/time
         String dateStr = LocalDateTime.now()
-            .format(DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy"));
+                .format(DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy"));
         JLabel dateLbl = new JLabel(dateStr);
         dateLbl.setFont(new Font("Segoe UI", Font.PLAIN, 11));
         dateLbl.setForeground(Constants.C_TEXT_LIGHT);
         dateLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 
         card.add(textPanel, BorderLayout.CENTER);
-        card.add(dateLbl,   BorderLayout.EAST);
+        card.add(dateLbl, BorderLayout.EAST);
         return card;
     }
 
     // ── ACTION CARD ───────────────────────────────────────────────────────────
 
     private static JPanel buildActionCard(String title, String subtitle,
-                                          String iconFile, boolean danger,
-                                          Color accent) {
+            String iconFile, boolean danger,
+            Color accent) {
         JPanel card = new JPanel() {
-            @Override protected void paintComponent(Graphics g) {
+            @Override
+            protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                    RenderingHints.VALUE_ANTIALIAS_ON);
+                        RenderingHints.VALUE_ANTIALIAS_ON);
                 // Card background
                 g2.setColor(getBackground());
                 g2.fillRoundRect(0, 0, getWidth(), getHeight(), 12, 12);
@@ -333,10 +355,12 @@ public class HomeScreen {
                 g2.setColor(new Color(0, 0, 0, 10));
                 g2.fillRect(0, getHeight() - 1, getWidth(), 1);
             }
-            @Override protected void paintBorder(Graphics g) {
+
+            @Override
+            protected void paintBorder(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                    RenderingHints.VALUE_ANTIALIAS_ON);
+                        RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setColor(danger ? Constants.C_DANGER_BORDER : Constants.C_BORDER);
                 g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 12, 12);
             }
@@ -348,12 +372,13 @@ public class HomeScreen {
 
         // ── Left: icon in tinted pill ──────────────────────────────────────────
         Color iconBg = new Color(accent.getRed(), accent.getGreen(),
-                                 accent.getBlue(), 20);
+                accent.getBlue(), 20);
         JPanel iconWrap = new JPanel() {
-            @Override protected void paintComponent(Graphics g) {
+            @Override
+            protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                    RenderingHints.VALUE_ANTIALIAS_ON);
+                        RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setColor(iconBg);
                 g2.fillRoundRect(0, 0, getWidth(), getHeight(), 12, 12);
             }
@@ -393,7 +418,7 @@ public class HomeScreen {
         textPanel.add(Box.createVerticalStrut(8));
         textPanel.add(hintLbl);
 
-        card.add(iconWrap,  BorderLayout.WEST);
+        card.add(iconWrap, BorderLayout.WEST);
         card.add(textPanel, BorderLayout.CENTER);
         return card;
     }
@@ -407,18 +432,21 @@ public class HomeScreen {
         try (Connection conn = DBUtil.getConnection()) {
             try (Statement st = conn.createStatement()) { // No. of Applicants
                 ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM applicant_t");
-                if (rs.next()) totalApplicants = rs.getInt(1);
+                if (rs.next())
+                    totalApplicants = rs.getInt(1);
             }
             try (Statement st = conn.createStatement()) { // No. of Applicants TODAY
                 ResultSet rs = st.executeQuery(
-                    "SELECT COUNT(*) FROM applicant_t " +
-                    "WHERE DATE(created_at) = CURDATE()");
-                if (rs.next()) totalToday = rs.getInt(1);
+                        "SELECT COUNT(*) FROM applicant_t " +
+                                "WHERE DATE(created_at) = CURDATE()");
+                if (rs.next())
+                    totalToday = rs.getInt(1);
             }
             try (Statement st = conn.createStatement()) {
                 ResultSet rs = st.executeQuery(
-                    "SELECT name FROM applicant_t ORDER BY applicant_id DESC LIMIT 1"); // Name of recent applicant
-                if (rs.next()) mostRecentName = rs.getString(1);
+                        "SELECT name FROM applicant_t ORDER BY applicant_id DESC LIMIT 1"); // Name of recent applicant
+                if (rs.next())
+                    mostRecentName = rs.getString(1);
             }
         } catch (SQLException ex) {
             // DB columns may not exist yet — silently ignore, show 0s
@@ -430,22 +458,23 @@ public class HomeScreen {
         bar.setMaximumSize(new Dimension(Integer.MAX_VALUE, 90));
 
         bar.add(buildStatCard("Total Applicants", String.valueOf(totalApplicants),
-            "All registered records", Constants.C_ACCENT));
+                "All registered records", Constants.C_ACCENT));
         bar.add(buildStatCard("Applied Today", String.valueOf(totalToday),
-            "New submissions today", new Color(16, 124, 88)));
+                "New submissions today", new Color(16, 124, 88)));
         bar.add(buildStatCard("Most Recent", mostRecentName,
-            "Latest applicant on record", new Color(100, 60, 180)));
+                "Latest applicant on record", new Color(100, 60, 180)));
 
         return bar;
     }
 
     private static JPanel buildStatCard(String label, String value,
-                                        String sub, Color accent) {
+            String sub, Color accent) {
         JPanel card = new JPanel() {
-            @Override protected void paintComponent(Graphics g) {
+            @Override
+            protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                    RenderingHints.VALUE_ANTIALIAS_ON);
+                        RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setColor(Constants.C_SURFACE);
                 g2.fillRoundRect(0, 0, getWidth(), getHeight(), 12, 12);
                 // Top accent bar
@@ -454,10 +483,12 @@ public class HomeScreen {
                 g2.setColor(new Color(0, 0, 0, 10));
                 g2.fillRect(0, getHeight() - 1, getWidth(), 1);
             }
-            @Override protected void paintBorder(Graphics g) {
+
+            @Override
+            protected void paintBorder(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                    RenderingHints.VALUE_ANTIALIAS_ON);
+                        RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setColor(Constants.C_BORDER);
                 g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 12, 12);
             }
@@ -493,7 +524,8 @@ public class HomeScreen {
         subLbl.setForeground(Constants.C_TEXT_LIGHT);
         subLbl.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        // Push content to the bottom so all cards align their labels at the same vertical position
+        // Push content to the bottom so all cards align their labels at the same
+        // vertical position
         card.add(Box.createVerticalGlue());
         card.add(valueLbl);
         card.add(Box.createVerticalStrut(2));
