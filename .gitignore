@@ -1,2 +1,14 @@
-/bin/
 *.class
+/bin/
+/out/
+
+.classpath
+.project
+.settings/
+.vscode/
+
+applicants_export.csv
+*.csv
+
+.DS_Store
+Thumbs.db
