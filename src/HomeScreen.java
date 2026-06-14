@@ -114,9 +114,18 @@ public class HomeScreen {
         roleBadge.setForeground(new Color(255, 255, 255, 200));
         roleBadge.setBorder(BorderFactory.createEmptyBorder(4, 12, 4, 12));
         roleBadge.setOpaque(false);
-
+        
+        // disposes home screen then goes to login page
         JButton logoutBtn = UIFactory.createOutlineButton("Logout");
-        logoutBtn.addActionListener(e -> { frame.dispose(); System.exit(0); });
+        logoutBtn.addActionListener(e -> {
+            frame.dispose();
+            LoginDialog login = new LoginDialog();
+            if (login.wasSuccessful()) {
+                HomeScreen.show();
+            } else {
+                System.exit(0);
+            }
+        });
 
         JPanel navRight = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 14));
         navRight.setOpaque(false);
