@@ -12,3 +12,5 @@ applicants_export.csv
 
 .DS_Store
 Thumbs.db
+
+src/Constants.java
