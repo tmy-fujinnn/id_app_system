@@ -649,8 +649,7 @@ public class ApplicationForm {
     }
 
     // ── Parent section builder ────────────────────────────────────────────────
-    private static JPanel buildParentSection(String title, JCheckBox unknownChk,
-            Object[][] rows) {
+    private static JPanel buildParentSection(String title, JCheckBox unknownChk, Object[][] rows) {
         Color accent = new Color(100, 60, 180);
 
         JPanel card = new JPanel() {
@@ -715,13 +714,9 @@ public class ApplicationForm {
                 BorderFactory.createEmptyBorder(2, 8, 2, 8)));
         notice.setAlignmentX(Component.LEFT_ALIGNMENT);
         notice.setMaximumSize(new Dimension(Integer.MAX_VALUE, 36));
-        JLabel noticeIcon = new JLabel("\u24d8");
-        noticeIcon.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        noticeIcon.setForeground(Constants.C_DANGER);
         JLabel noticeText = new JLabel("This parent will be recorded as Unknown / Deceased.");
         noticeText.setFont(Constants.F_SMALL);
         noticeText.setForeground(Constants.C_DANGER);
-        notice.add(noticeIcon);
         notice.add(noticeText);
         notice.setVisible(false);
         card.add(notice);

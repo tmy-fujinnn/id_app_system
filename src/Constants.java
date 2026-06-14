@@ -41,7 +41,7 @@ public final class Constants {
     public static final String CORRECT_PASSWORD = "password123";
 
     // FOR DATABASE ESTABLISHMENT AND CONNECTION
-    public static final String DB_URL = "jdbc:mysql://localhost:3306/im_db?serverTimezone=UTC";
+    public static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/application_form?serverTimezone=UTC";
     public static final String DB_USER = "root";
-    public static final String DB_PASS = "Boybatchoy@0726";
+    public static final String DB_PASS = "idappsys123admin";
 }
