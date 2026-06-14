@@ -2,9 +2,6 @@
 /bin/
 /out/
 
-.classpath
-.project
-.settings/
 .vscode/
 
 applicants_export.csv
