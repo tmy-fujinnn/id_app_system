@@ -54,7 +54,7 @@ public class HomeScreen {
         nav.setBorder(BorderFactory.createEmptyBorder(0, 28, 0, 28));
 
         // ── Left: logo ────────────────────────────────────────────────────────
-        ImageIcon navLogoIcon = UIFactory.loadIcon("logo.png", 42);
+        ImageIcon navLogoIcon = UIFactory.loadIcon("QC_logo.png", 42);
         JLabel logoMark;
         if (navLogoIcon != null) {
             logoMark = new JLabel(navLogoIcon);

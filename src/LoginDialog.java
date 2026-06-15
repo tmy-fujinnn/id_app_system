@@ -29,7 +29,7 @@ public class LoginDialog extends JDialog {
 
         // Load logo — fills the full dialog width minus padding.
         // Falls back to plain "QEasy" text if logo.png is missing.
-        ImageIcon logoIcon = UIFactory.loadIcon("logo.png", 50);
+        ImageIcon logoIcon = UIFactory.loadIcon("QC_logo.png", 50);
         if (logoIcon != null) {
             JLabel logoLbl = new JLabel(logoIcon);
             logoLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -43,12 +43,6 @@ public class LoginDialog extends JDialog {
         }
 
         // Thin divider between logo and title text
-        brand.add(Box.createVerticalStrut(14));
-        JPanel logoDivider = new JPanel();
-        logoDivider.setBackground(new Color(255, 255, 255, 40));
-        logoDivider.setMaximumSize(new Dimension(Integer.MAX_VALUE, 1));
-        logoDivider.setPreferredSize(new Dimension(0, 1));
-        brand.add(logoDivider);
         brand.add(Box.createVerticalStrut(14));
 
         // "ID Application System" title under the logo
@@ -114,7 +108,7 @@ public class LoginDialog extends JDialog {
         footer.setBackground(Constants.C_HEADER_BG);
         for (String f : new String[]{
                 "Apply in under 10 minutes",
-                "100% online process",
+                "Admin-Use Prototype",
                 "Real-time status updates" }) {
             JLabel l = new JLabel(f);
             l.setFont(Constants.F_CAPTION);
